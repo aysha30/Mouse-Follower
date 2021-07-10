@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 import './App.css';
 
 function App() {
@@ -14,10 +14,10 @@ var height = window.innerHeight
 
   const [ mousePos, setMousePos ] = useState(initialMousePos); 
 
-  const handleMouseMove = (event) => {
+  const handleMouseMove = useCallback(event => {
     const { clientX, clientY } = event;
     setMousePos({ x: clientX, y: clientY});
-  };
+  },[setMousePos]);
 
   return (
     <svg width={width} height={height} onMouseMove={handleMouseMove}>
